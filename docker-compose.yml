@@ -5,10 +5,8 @@ services:
     container_name: habit-backend
     ports:
       - "8080:8080"
-    depends_on:
-      - mongo
     environment:
-      - SPRING_MONGODB_URI=${CONNECTION_STRING}
+      - SPRING_MONGODB_URI=${MONGO_URI}
       
   frontend:
     build: ./frontend
@@ -18,17 +16,6 @@ services:
     depends_on:
       - backend
 
-  mongo:
-    image: mongo:latest
-    container_name: mongo-container
-    ports:
-      - "${MONGO_PORT}:${MONGO_PORT}"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-    volumes:
-      - mongo-data:/data/db
-      - mongo-config:/data/configdb
 
 volumes:
   mongo-data:

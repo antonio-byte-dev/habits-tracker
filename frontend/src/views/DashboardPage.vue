@@ -332,6 +332,7 @@ button:hover {
   gap: 1rem;
 }
 .user-email {
+  color:#000000;
   font-weight: bold;
 }
 
