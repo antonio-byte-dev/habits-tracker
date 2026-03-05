@@ -14,11 +14,6 @@
         <input v-model="description" placeholder="Ex: 8 glasses/day" />
       </div>
 
-      <div class="input-group">
-        <label>Every x days</label>
-        <input v-model.number="frequency" type="number" min="1" />
-      </div>
-
       <button class="submit-btn" type="submit">Accept changes</button>
     </form>
   </div>

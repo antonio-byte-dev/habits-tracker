@@ -14,11 +14,6 @@
         <input v-model="description" placeholder="Ex: 8 glasses/day" />
       </div>
 
-      <div class="input-group">
-        <label>Every x days</label>
-        <input v-model.number="frequency" type="number" min="1" />
-      </div>
-
       <button class="submit-btn" type="submit">Add Task</button>
     </form>
   </div>
@@ -51,7 +46,7 @@ export default {
         await api.post("/", {
           name: this.name,
           description: this.description,
-          frequency: this.frequency,
+          frequency: 1,
         },
       {
       headers: {

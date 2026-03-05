@@ -4,7 +4,7 @@
       <button class="logout-btn" @click="logout">Logout</button>
     </div>
   <div class="dashboard">
-    <h1>Your Habits</h1>
+    <h1>Your Tasks</h1>
     <ul class="task-list">
       <li v-for="task in tasks" :key="getTaskKey(task)" class="task-card">
         <!-- Header row: clickable -->
@@ -14,9 +14,11 @@
           </div>
           
           <div class="right">
-            <span class="task-frequency">Every {{ task.frequency }} day(s)</span>
-            <button  @click="markAsDone()">
-            Done Today
+            <button  @click="editTask(task)">
+            Edit
+            </button>
+            <button  @click="deleteTask(task)">
+            Done!
             </button>
             <span class="arrow"  @click="toggleTask(getTaskKey(task))" :class="{ open: expandedTask === getTaskKey(task) }">▼</span>
           </div>
@@ -25,22 +27,12 @@
         <!-- Dropdown content (full width under header) -->
         <div class="dropdown" :class="{ open: expandedTask === getTaskKey(task) }">
           <p class="task-description">{{ task.description || "No description." }}</p>
-        
-            
-          <div class="right">
-            <button  @click="editTask(task)">
-            Edit
-            </button>
-            <button  @click="deleteTask(task)">
-            Delete
-            </button>
-          </div>
         </div>
         
       </li>
       <div>
       <button class="button-27" role="button" @click="redirectToAddTask">
-      Add Habit
+      Add Task
       </button>
     </div>
     </ul>
@@ -65,9 +57,9 @@ export default {
       this.$router.push({ name: "edithabit", params: { id: habit.id } });
     },
     async deleteTask(habit){
-      const ok = window.confirm(`Are you sure you want to delete "${habit.name}"?`);
+      //const ok = window.confirm(`Are you sure you want to delete "${habit.name}"?`);
 
-      if (!ok) return; // User clicked "Cancel"
+      //if (!ok) return; // User clicked "Cancel"
 
       try{
         await api.delete('/' + habit.id);
@@ -93,7 +85,7 @@ export default {
       return `${task.name}-${task.frequency}`;
     },
     async markAsDone(){
-
+      
     },
     async logout(){
       try {
@@ -141,14 +133,14 @@ export default {
   margin: 2rem auto;
   padding: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+  color: #ffffff;
 }
 
 .dashboard h1 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1.25rem;
-  color: #2c3e50;
+  color: #ffffff;
 }
 
 .task-list {
@@ -325,8 +317,8 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 2rem;
-  background-color: #00796b; /* teal shade */
-  color: white;
+  background-color: #ffffff; /* teal shade */
+  color: black;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
