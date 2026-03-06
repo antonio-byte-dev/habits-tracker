@@ -21,7 +21,7 @@ import com.antoniodev.habit_tracker.service.HabitService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseToken;
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/")
 public class HabitController {
 
