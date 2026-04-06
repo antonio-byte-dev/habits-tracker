@@ -4,7 +4,7 @@ A comprehensive task list application that allows users to create and manage the
 
 ## Usage
 
-Access this application [HERE](http://194.163.182.211:5173/)
+This page is no longer online. To try it please run it locally.
 
 ## Features
 
